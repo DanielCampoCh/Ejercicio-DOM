@@ -1,43 +1,270 @@
+:root {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #202c38;
+    background: #17212b;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    min-height: 100vh;
+    margin: 0;
+    padding: 64px 20px;
     display: flex;
     justify-content: center;
-    padding-top: 50px;
+    align-items: flex-start;
+    background:
+        radial-gradient(ellipse at 12% 10%, rgba(40, 100, 111, 0.42), transparent 34%),
+        radial-gradient(ellipse at 88% 85%, rgba(47, 76, 105, 0.4), transparent 36%),
+        #17212b;
 }
+
 .todo-container {
-    background: white;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    width: 400px;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    width: min(100%, 580px);
+    padding: 38px;
+    border: 1px solid rgba(220, 229, 232, 0.8);
+    border-top: 5px solid #247c79;
+    border-radius: 26px;
+    background: #f8faf9;
+    box-shadow: 0 30px 90px rgba(5, 14, 23, 0.38);
 }
+
+.todo-container::before {
+    position: absolute;
+    z-index: -1;
+    top: -105px;
+    right: -80px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(48, 143, 137, 0.12), transparent 70%);
+    content: "";
+    pointer-events: none;
+}
+
+h1 {
+    margin: 0 0 28px;
+    color: #1d2b35;
+    font-size: clamp(1.8rem, 5vw, 2.45rem);
+    font-weight: 850;
+    letter-spacing: -0.055em;
+}
+
+h1::before {
+    display: block;
+    margin-bottom: 9px;
+    color: #317f7a;
+    content: "ORGANIZA TU DÍA";
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+}
+
 .input-section {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    margin-bottom: 26px;
 }
-input, button {
-    padding: 10px;
-    font-size: 14px;
+
+.input-section input,
+.input-section button {
+    min-height: 50px;
+    border-radius: 13px;
+    font: inherit;
 }
+
+.input-section input {
+    min-width: 0;
+    padding: 0 15px;
+    border: 1px solid #d6e0e1;
+    outline: none;
+    color: #253640;
+    background: #fff;
+    transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.input-section input:first-child {
+    grid-column: 1 / -1;
+}
+
+.input-section input::placeholder {
+    color: #88979d;
+}
+
+.input-section input:focus {
+    border-color: #398984;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(57, 137, 132, 0.13);
+}
+
+.input-section input[type="date"] {
+    color: #66777e;
+}
+
 button {
-    background-color: #28a745;
-    color: white;
-    border: none;
+    border: 0;
+    color: #fff;
+    background: #286f70;
     cursor: pointer;
+    font: inherit;
+    font-weight: 750;
+    transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
 }
+
+.input-section button {
+    padding: 0 21px;
+    background: #286f70;
+    box-shadow: 0 6px 14px rgba(40, 111, 112, 0.2);
+}
+
+.input-section button:hover {
+    background: #20595b;
+    box-shadow: 0 8px 18px rgba(40, 111, 112, 0.28);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid rgba(40, 111, 112, 0.35);
+    outline-offset: 3px;
+}
+
+#todo-list {
+    display: grid;
+    gap: 11px;
+}
+
 .todo-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #f9f9f9;
-    padding: 10px;
-    margin-top: 8px;
-    border-radius: 4px;
+    gap: 14px;
+    min-width: 0;
+    padding: 14px 15px;
+    border: 1px solid #e1e8e8;
+    border-left: 4px solid #6e9a98;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(28, 50, 59, 0.05);
+    transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
+
+.todo-item:hover {
+    transform: translateY(-2px);
+    border-color: #b8d2d0;
+    border-left-color: #287c79;
+    box-shadow: 0 9px 20px rgba(28, 50, 59, 0.09);
+}
+
+.todo-item > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.todo-item > div:first-child {
+    flex: 1;
+}
+
+.todo-item input[type="checkbox"] {
+    width: 19px;
+    height: 19px;
+    flex: 0 0 auto;
+    margin: 0;
+    accent-color: #287c79;
+    cursor: pointer;
+}
+
+.todo-item span {
+    overflow-wrap: anywhere;
+    color: #34444c;
+    font-size: 0.96rem;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+.todo-item.completed {
+    border-left-color: #668f78;
+    background: #f5faf6;
+}
+
 .todo-item.completed span {
+    color: #899a91;
     text-decoration: line-through;
-    color: gray;
+}
+
+.todo-item > div:last-child button {
+    min-height: 35px;
+    padding: 0 12px;
+    border-radius: 9px;
+    background: #e7f0ef;
+    color: #286f70;
+    font-size: 0.84rem;
+}
+
+.todo-item > div:last-child button:hover {
+    background: #d7e8e6;
+}
+
+.todo-item > div:last-child button:last-child {
+    width: 35px;
+    padding: 0;
+    background: #f5ece9;
+    color: #9b5145;
+}
+
+.todo-item > div:last-child button:last-child:hover {
+    background: #eddbd5;
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 24px 14px;
+    }
+
+    .todo-container {
+        padding: 27px 20px;
+        border-radius: 21px;
+    }
+
+    .input-section {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .input-section input:first-child {
+        grid-column: auto;
+    }
+
+    .input-section button {
+        min-height: 48px;
+    }
+
+    .todo-item {
+        align-items: flex-start;
+        padding: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
 }

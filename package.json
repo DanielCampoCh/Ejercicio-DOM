@@ -1,0 +1,28 @@
+{
+  "name": "practica-dom",
+  "version": "1.0.0",
+  "description": "El [DOM](https://developer.mozilla.org/es/docs/Glossary/DOM), o Document Object Model (Modelo de Objeto de Documento), es una interfaz de programación que los navegadores web utilizan para representar y manipular documentos HTML y XML. Básicamente, el DOM es una representación en forma de árbol del contenido de una página web, donde cada nodo en el árbol es un objeto que representa una parte del documento, como un elemento HTML, un atributo o un texto, que se define asi:",
+  "main": "script.js",
+  "scripts": {
+  "start": "node src/server.js",
+  "dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielCampoCh/Ejercicio-DOM.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/DanielCampoCh/Ejercicio-DOM/issues"
+  },
+  "homepage": "https://github.com/DanielCampoCh/Ejercicio-DOM#readme",
+  "dependencies": {
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

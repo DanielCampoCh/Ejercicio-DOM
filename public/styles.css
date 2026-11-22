@@ -268,3 +268,34 @@ input:focus-visible {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* ===== Layout con las dos listas (tareas + contactos) ===== */
+.apps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 28px;
+    width: 100%;
+}
+
+.contactos {
+    border-top-color: #2f4c69;
+}
+
+.contactos h1::before {
+    content: "TU AGENDA";
+}
+
+.contactos .input-section {
+    grid-template-columns: 1fr 1fr;
+}
+
+.contactos .input-section button {
+    grid-column: 1 / -1;
+}
+
+#contact-list {
+    display: grid;
+    gap: 12px;
+}

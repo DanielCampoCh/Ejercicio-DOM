@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas y Contactos - API Express</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="apps">
+        <!-- Lista de tareas: consume /tareas -->
+        <section class="todo-container">
+            <h1>Mi Lista de Tareas</h1>
+            <form id="todo-form" class="input-section">
+                <input id="todo-title" type="text" placeholder="Nueva tarea...">
+                <input id="date-picker" type="date">
+                <button type="submit">Agregar</button>
+            </form>
+            <div id="todo-list"></div>
+        </section>
+
+        <!-- Lista de contactos: consume /contactos -->
+        <section class="todo-container contactos">
+            <h1>Mis Contactos</h1>
+            <form id="contact-form" class="input-section">
+                <input id="contact-name" type="text" placeholder="Nombre...">
+                <input id="contact-phone" type="tel" placeholder="Teléfono">
+                <input id="contact-email" type="email" placeholder="Email (opcional)">
+                <button type="submit">Agregar</button>
+            </form>
+            <div id="contact-list"></div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

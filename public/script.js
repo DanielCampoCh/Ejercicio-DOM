@@ -1,5 +1,3 @@
-// Frontend que consume la API con fetch (GET, POST, PUT, DELETE)
-
 async function api(url, method = 'GET', body) {
   const opciones = { method, headers: { 'Content-Type': 'application/json' } };
   if (body) opciones.body = JSON.stringify(body);
@@ -139,6 +137,6 @@ document.getElementById('contact-form').addEventListener('submit', async (evento
   } catch (e) { alert(e.message); }
 });
 
-// Carga inicial
+
 renderTareas();
 renderContactos();

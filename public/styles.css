@@ -269,7 +269,6 @@ input:focus-visible {
     }
 }
 
-/* ===== Layout con las dos listas (tareas + contactos) ===== */
 .apps {
     display: flex;
     flex-wrap: wrap;

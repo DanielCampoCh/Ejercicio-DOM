@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-// Base de datos temporal en memoria
 let tareas = [
   { id: 1, titulo: 'Aprender Express', fechaLimite: '2026-11-25', completada: false },
   { id: 2, titulo: 'Crear una API REST', fechaLimite: '2026-11-27', completada: false },
@@ -9,12 +8,10 @@ let tareas = [
 ];
 let siguienteId = 4;
 
-// 1. Obtener todas las tareas (GET)
 router.get('/', (req, res) => {
   res.json(tareas);
 });
 
-// 1.1 Obtener una tarea por id (GET)
 router.get('/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const tarea = tareas.find(t => t.id === id);
@@ -24,7 +21,6 @@ router.get('/:id', (req, res) => {
   res.json(tarea);
 });
 
-// 2. Crear una nueva tarea (POST)
 router.post('/', (req, res) => {
   const { titulo, fechaLimite } = req.body ?? {};
   if (!titulo || !String(titulo).trim()) {
@@ -40,7 +36,6 @@ router.post('/', (req, res) => {
   res.status(201).json(nuevaTarea);
 });
 
-// 3. Actualizar una tarea (PUT)
 router.put('/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const tarea = tareas.find(t => t.id === id);
@@ -57,7 +52,6 @@ router.put('/:id', (req, res) => {
   res.json(tarea);
 });
 
-// 4. Eliminar una tarea (DELETE)
 router.delete('/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const indice = tareas.findIndex(t => t.id === id);
